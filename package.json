@@ -1,0 +1,14 @@
+{
+  "name": "dslink-javascript-util-data",
+  "version": "1.0.0",
+  "description": "Simple requester utilities for visualizing DSA nodes as D3 or other data.",
+  "main": "web/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Bullington <Michael.Bullington@AcuityBrands.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dslink": "^1.1.1"
+  }
+}
