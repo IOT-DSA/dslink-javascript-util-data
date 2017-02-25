@@ -357,15 +357,17 @@ function init() {
           }.bind(this));
 
           // delete any old nodes
-          oldChildren.forEach(function(childKey) {
-            if (children.indexOf(childKey) < 0) {
-              // remove old node
-              oldNode.children.splice(oldChildren.indexOf(childKey), 1);
-              var childPathPrefix = path == "/" ? "/" : (path + "/");
-              this._map.deleteStartingWith(childPathPrefix + childKey);
-              this.emit("delete", childPathPrefix + childKey);
-            }
-          }.bind(this));
+          if (this._deepListCache[path]) {
+            oldChildren.forEach(function(childKey) {
+              if (children.indexOf(childKey) < 0) {
+                // remove old node
+                oldNode.children.splice(oldChildren.indexOf(childKey), 1);
+                var childPathPrefix = path == "/" ? "/" : (path + "/");
+                this._map.deleteStartingWith(childPathPrefix + childKey);
+                this.emit("delete", childPathPrefix + childKey);
+              }
+            }.bind(this));
+          }
         }
 
         if (promises.length) {
